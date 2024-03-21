@@ -1,19 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
+import { router } from 'expo-router';
+
 import {
   StyleSheet,
   FlatList,
   View,
   ActivityIndicator,
   Text,
+  Button,
 } from 'react-native';
 import RaceListItem from '../components/RaceListItem';
 import dayjs from 'dayjs';
 import { Link, Stack } from 'expo-router';
-
-// import racesResponse from '../../assets/data/races.json';
-// const races = racesResponse.data.races.response;
+import "../../firebase/firebaseConfig"
 
 import { useQuery, gql } from '@apollo/client';
+import { useEffect } from 'react';
 
 const query = gql`
   query MyQuery($season: String, $type: String) {
@@ -34,6 +36,14 @@ const query = gql`
 `;
 
 export default function HomeScreen() {
+
+  useEffect(() => {
+    setTimeout(()=>{
+      router.replace("/auth");
+    } , 1000)
+  }, []);
+
+
   const { data, loading, error } = useQuery(query, {
     variables: { season: '2023', type: 'Race' },
   });
