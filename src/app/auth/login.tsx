@@ -35,7 +35,7 @@ const Login: React.FC = () => {
                     password
                 );
                 console.log("User signed in:", userCredential.user);
-                router.replace("/"); 
+                router.replace("/home"); 
             } catch (error) {
                 setError(error.message);
                 console.error("Login error:", error);
@@ -56,7 +56,7 @@ const Login: React.FC = () => {
     const styles = StyleSheet.create({
         button: {
             padding: 10,
-            backgroundColor: "#272A2B",
+            backgroundColor: "#000000",
             marginVertical: 40,
             borderRadius: 15,
             width: 100,
@@ -107,6 +107,12 @@ const Login: React.FC = () => {
 
     return (
         <View style={styles.container}>
+            <Text
+                style={{
+                    fontSize : 18,
+                    marginBottom : 40,
+                }}
+            >Welcome Back</Text>
             <TextInput
                 style={styles.inputStyle}
                 placeholder="Username"
@@ -130,11 +136,18 @@ const Login: React.FC = () => {
                 <ActivityIndicator
                     style={{ marginTop: 20 }}
                     size="large"
-                    color="#0000ff"
+                    color="#0010ff"
                 />
             )}
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>Log In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={
+                ()=>{
+                    router.push("/map");
+                }
+            }>
+                <Text style={styles.buttonText}>Maps</Text>
             </TouchableOpacity>
 
             <Text style={styles.normalText}>

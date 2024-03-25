@@ -3,7 +3,7 @@ import { Entypo } from '@expo/vector-icons';
 import { Colors } from '../Constants/Colors';
 import dayjs from 'dayjs';
 
-import racesResponse from '../../assets/data/races.json';
+import racesResponse from '../../assets/data/race.json';
 import { Link } from 'expo-router';
 const races = racesResponse.data.races.response;
 
